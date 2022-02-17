@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Movies.API
+namespace MoviesAPI
 {
     public class Startup
     {
@@ -34,8 +34,9 @@ namespace Movies.API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Movies.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoviesAPI", Version = "v1" });
             });
+            
             services.AddScoped<IActorsDataAccess, ActorsDataAccess>();
             services.AddScoped<IGenresDataAccess, GenresDataAccess>();
             services.AddScoped<IMoviesActorsDataAccess, MoviesActorsDataAccess>();
@@ -51,7 +52,7 @@ namespace Movies.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Movies.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MoviesAPI v1"));
             }
 
             app.UseHttpsRedirection();
