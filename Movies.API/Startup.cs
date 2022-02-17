@@ -1,7 +1,11 @@
+using DataAccess.Contract;
+using DataAccess.Implementation;
+using DataAccess.Implementation.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +36,12 @@ namespace Movies.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Movies.API", Version = "v1" });
             });
+            services.AddScoped<IActorsDataAccess, ActorsDataAccess>();
+            services.AddScoped<IGenresDataAccess, GenresDataAccess>();
+            services.AddScoped<IMoviesActorsDataAccess, MoviesActorsDataAccess>();
+            services.AddScoped<IMoviesDataAccess, MoviesDataAccess>();
+
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQL")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

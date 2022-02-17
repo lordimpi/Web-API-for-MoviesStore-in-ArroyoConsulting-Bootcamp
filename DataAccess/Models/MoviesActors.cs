@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Models
 {
-    class MoviesActors
+    public class MoviesActors
     {
     }
 }
