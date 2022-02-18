@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace DataAccess.Contract
 {
     public interface IMoviesActorsDataAccess
     {
+        List<MoviesActors> GetMoviesActors();
+        MoviesActors GetMoviesActor(int id);
+        bool InsertMovieActor(MoviesActors moviesActor);
+        bool UpdateMovieActor(MoviesActors moviesActor);
+        bool DeleteMovieActor(int id);
     }
 }
