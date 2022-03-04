@@ -1,6 +1,7 @@
 ﻿using DataAccess.Contract;
 using DataAccess.Implementation.Base;
 using DataAccess.Models;
+using DataAccess.Models.Tables;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

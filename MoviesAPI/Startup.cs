@@ -1,6 +1,11 @@
+using AutoMapper;
 using DataAccess.Contract;
 using DataAccess.Implementation;
 using DataAccess.Implementation.Base;
+using DataAccess.Models.Tables;
+using Infrastructure.Contract;
+using Infrastructure.DTO;
+using Infrastructure.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,15 +37,31 @@ namespace MoviesAPI
         {
 
             services.AddControllers();
+            services.AddCors();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoviesAPI", Version = "v1" });
             });
-            
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.CreateMap<Movies, MoviesDTO>()
+                    .ForMember(p => p.TitleMovie, org => org.MapFrom(p => p.Title.ToUpper()))
+                    .ForMember(p => p.DescriptionMovie, org => org.MapFrom(p => p.Description.ToLower()));
+                //mc.AddProfile();
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddScoped<IActorsDataAccess, ActorsDataAccess>();
             services.AddScoped<IGenresDataAccess, GenresDataAccess>();
             services.AddScoped<IMoviesActorsDataAccess, MoviesActorsDataAccess>();
             services.AddScoped<IMoviesDataAccess, MoviesDataAccess>();
+            services.AddScoped<IAwardsDataAccess, AwardsDataAccess>();
+            services.AddScoped<IMoviesInfrastructure, MoviesInfrastructure>();
+            services.AddScoped<IAwardsInfrastructure, AwardsInfrastructure>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQL")));
         }

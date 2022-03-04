@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Models
+namespace DataAccess.Models.Tables
 {
     public class Movies
     {
@@ -16,6 +16,9 @@ namespace DataAccess.Models
         public int RunningTime { get; set; }
         public DateTime Release { get; set; }
         public int GenreId { get; set; }
+        public int AwardId { get; set; }
+        public virtual Genres Genre { get; set; }
+        public virtual Awards Award { get; set; }
 
         public Movies()
         {

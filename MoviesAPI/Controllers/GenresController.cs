@@ -1,5 +1,6 @@
 ﻿using DataAccess.Contract;
 using DataAccess.Models;
+using DataAccess.Models.Tables;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
