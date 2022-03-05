@@ -153,17 +153,34 @@ namespace Infrastructure.Implementation
             return _moviesDataAccess.GetMoviesByTitle(title);
         }
 
-        public bool InsertMovie(Movies movie)
+        public bool InsertMovie(MoviesInsertDTO movieDTO)
         {
-            movie.Title = movie.Title.FormatText();
-            movie.Description = movie.Description.FormatText();
+            Movies movie = new()
+            {
+                Title = movieDTO.Title,
+                AwardId = movieDTO.AwardId,
+                Description = movieDTO.Description,
+                GenreId = movieDTO.GenreId,
+                Release = movieDTO.Release,
+                RunningTime = movieDTO.RunningTime
+            };
+
             return _moviesDataAccess.InsertMovie(movie);
         }
 
-        public bool UpdateMovie(Movies movie)
+        public bool UpdateMovie(MoviesUpdateDTO movieDTO)
         {
-            movie.Description = movie.Description.FormatText();
-            movie.Title = movie.Title.FormatText();
+            Movies movie = new Movies()
+            {
+                MovieId = movieDTO.MovieId,
+                Title = movieDTO.Title.FormatText(),
+                Description = movieDTO.Description.FormatText(),
+                AwardId = movieDTO.AwardId,
+                GenreId = movieDTO.GenreId,
+                Release = movieDTO.Release,
+                RunningTime = movieDTO.RunningTime
+            };
+
             return _moviesDataAccess.UpdateMovie(movie);
         }
     }

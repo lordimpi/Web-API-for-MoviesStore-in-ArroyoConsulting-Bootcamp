@@ -13,8 +13,8 @@ namespace Infrastructure.Contract
     {
         public List<MoviesDTO> GetMovies();
         public MoviesDTO GetMovie(int id);
-        public bool InsertMovie(Movies movie);
-        public bool UpdateMovie(Movies movie);
+        public bool InsertMovie(MoviesInsertDTO movie);
+        public bool UpdateMovie(MoviesUpdateDTO movie);
         public bool DeleteMovie(int id);
         List<Movies> GetMoviesByMethod();
         List<Movies> GetMoviesByTitle(string title);
