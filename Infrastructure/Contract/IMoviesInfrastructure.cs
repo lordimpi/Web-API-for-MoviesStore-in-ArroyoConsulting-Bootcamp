@@ -1,6 +1,6 @@
 ﻿using DataAccess.Models.DTO;
 using DataAccess.Models.Tables;
-using Infrastructure.DTO;
+using Infrastructure.DTO.Movies;
 using System;
 using System.Collections.Generic;
 using System.Linq;

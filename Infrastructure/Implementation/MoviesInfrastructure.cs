@@ -3,7 +3,7 @@ using DataAccess.Contract;
 using DataAccess.Models.DTO;
 using DataAccess.Models.Tables;
 using Infrastructure.Contract;
-using Infrastructure.DTO;
+using Infrastructure.DTO.Movies;
 using Infrastructure.Utils;
 using System;
 using System.Collections.Generic;

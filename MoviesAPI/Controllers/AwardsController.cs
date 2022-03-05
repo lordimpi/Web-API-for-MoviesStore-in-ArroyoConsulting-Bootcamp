@@ -1,6 +1,6 @@
 ﻿using DataAccess.Models.Tables;
 using Infrastructure.Contract;
-using Infrastructure.DTO;
+using Infrastructure.DTO.Awards;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

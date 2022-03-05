@@ -4,7 +4,7 @@ using DataAccess.Implementation;
 using DataAccess.Implementation.Base;
 using DataAccess.Models.Tables;
 using Infrastructure.Contract;
-using Infrastructure.DTO;
+using Infrastructure.DTO.Movies;
 using Infrastructure.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

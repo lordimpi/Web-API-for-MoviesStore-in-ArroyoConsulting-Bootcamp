@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.DTO
+namespace Infrastructure.DTO.Movies
 {
     public class MoviesDTO
     {

@@ -1,5 +1,5 @@
 ﻿using DataAccess.Models.Tables;
-using Infrastructure.DTO;
+using Infrastructure.DTO.Awards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Infrastructure.Contract
         bool DeleteAward(int id);
         AwardsDTO GetAward(int id);
         List<AwardsDTO> GetAwards();
-        bool InsertAward(Awards award);
-        bool UpdateAward(Awards movie);
+        bool InsertAward(AwardsInsertDTO awardsDTO);
+        bool UpdateAward(AwardsUpdateDTO awardsDTO);
     }
 }

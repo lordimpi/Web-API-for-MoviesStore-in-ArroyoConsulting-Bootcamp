@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.DTO
+namespace Infrastructure.Contract
 {
-    public class AwardsDTO
+    public interface IMoviesActorsInfrastructure
     {
-        public string Title { get; set; }
     }
 }

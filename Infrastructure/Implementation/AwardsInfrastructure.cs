@@ -2,7 +2,7 @@
 using DataAccess.Implementation.Base;
 using DataAccess.Models.Tables;
 using Infrastructure.Contract;
-using Infrastructure.DTO;
+using Infrastructure.DTO.Awards;
 using Infrastructure.Utils;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace Infrastructure.Implementation
         public AwardsDTO GetAward(int id)
         {
             Awards award = _awardsDataAccess.GetAward(id);
-            AwardsDTO awardsDTO = new AwardsDTO
+            AwardsDTO awardsDTO = new()
             {
                 Title = award.AwardTitle
             };
@@ -51,15 +51,22 @@ namespace Infrastructure.Implementation
             return awardsDTOs;
         }
 
-        public bool InsertAward(Awards award)
+        public bool InsertAward(AwardsInsertDTO awardsDTO)
         {
-            award.AwardTitle = award.AwardTitle.FormatText();
+            Awards award = new()
+            {
+                AwardTitle = awardsDTO.AwardTitle.FormatText(),
+            };
             return _awardsDataAccess.InsertAward(award);
         }
 
-        public bool UpdateAward(Awards award)
+        public bool UpdateAward(AwardsUpdateDTO awardsDTO)
         {
-            award.AwardTitle = award.AwardTitle.FormatText();
+            Awards award = new()
+            {
+                AwardTitle = awardsDTO.AwardTitle.FormatText(),
+                AwardId = awardsDTO.AwardId
+            };
             return _awardsDataAccess.UpdateAward(award);
         }
         public bool DeleteAward(int id)
