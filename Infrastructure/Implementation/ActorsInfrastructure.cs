@@ -27,7 +27,7 @@ namespace Infrastructure.Implementation
             {
                 FullName = act.FullName
             }).ToList();
-            return null;
+            return actorsDTOs;
         }
 
         public ActorsDTO GetActor(int id)

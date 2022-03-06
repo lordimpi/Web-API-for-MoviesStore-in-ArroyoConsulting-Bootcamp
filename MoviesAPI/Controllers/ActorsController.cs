@@ -1,12 +1,8 @@
-﻿using DataAccess.Contract;
-using DataAccess.Models;
-using DataAccess.Models.Tables;
-using Microsoft.AspNetCore.Http;
+﻿using DataAccess.Models.Tables;
+using Infrastructure.Contract;
+using Infrastructure.DTO.Actors;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MoviesAPI.Controllers
 {
@@ -14,41 +10,67 @@ namespace MoviesAPI.Controllers
     [ApiController]
     public class ActorsController : ControllerBase
     {
-        private readonly IActorsDataAccess _actorsDataAccess;
+        private readonly IActorsInfrastructure _infrastructure;
 
-        public ActorsController(IActorsDataAccess actorsDataAccess)
+        public ActorsController(IActorsInfrastructure infrastructure)
         {
-            _actorsDataAccess = actorsDataAccess;
+            _infrastructure = infrastructure;
         }
 
+        /// <summary>
+        /// Get list a actors
+        /// </summary>
+        /// <response code="200">Success opration and return Lists object.</response>
+        /// <response code="400">An error ocurred on the server.</response>
+        /// <returns>List DTO from object</returns>
         [HttpGet("GetActors")]
-        public List<Actors> GetActors()
+        public List<ActorsDTO> GetActors()
         {
-            return _actorsDataAccess.GetActors();
+            return _infrastructure.GetActors();
         }
-
+        /// <summary>
+        /// Get a actor by id
+        /// </summary>
+        /// <response code="200">Success opration and return object.</response>
+        /// <response code="400">An error ocurred on the server.</response>
+        /// <returns>DTO from object</returns>
         [HttpGet("GetActor")]
-        public Actors GetActor(int id)
+        public ActorsDTO GetActor(int id)
         {
-            return _actorsDataAccess.GetActor(id);
+            return _infrastructure.GetActor(id);
         }
-
+        /// <summary>
+        /// Insert actor with DTO
+        /// </summary>
+        /// <response code="200">Success opration and return true.</response>
+        /// <response code="400">An error ocurred on the server and return false.</response>
+        /// <returns>True or false</returns>
         [HttpPost("InsertActor")]
-        public bool InsertActor(Actors actor)
+        public bool InsertActor(ActorsInsertDTO actor)
         {
-            return _actorsDataAccess.InsertActor(actor);
+            return _infrastructure.InsertActor(actor);
         }
-
+        /// <summary>
+        /// Update actor by id with DTO
+        /// </summary>
+        /// <response code="200">Success opration and return true if update.</response>
+        /// <response code="400">An error ocurred on the server false if not insert.</response>
+        /// <returns>True or false</returns>
         [HttpPut("UpdateActor")]
-        public bool UpdateActor(Actors actor)
+        public bool UpdateActor(ActorsUpdateDTO actor)
         {
-            return _actorsDataAccess.UpdateActor(actor);
+            return _infrastructure.UpdateActor(actor);
         }
-
+        /// <summary>
+        /// Delete a  actor by id
+        /// </summary>
+        /// <response code="200">Success opration and return true if delete..</response>
+        /// <response code="400">An error ocurred on the server return false.</response>
+        /// <returns>True or false</returns>
         [HttpDelete("DeleteActor")]
         public bool DeleteActor(int id)
         {
-            return _actorsDataAccess.DeleteActor(id);
+            return _infrastructure.DeleteActor(id);
         }
     }
 }
