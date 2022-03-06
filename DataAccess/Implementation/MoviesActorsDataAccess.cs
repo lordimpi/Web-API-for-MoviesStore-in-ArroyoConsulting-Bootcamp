@@ -20,13 +20,6 @@ namespace DataAccess.Implementation
             _dbContext = dbContext;
         }
 
-        public bool DeleteMovieActor(int id)
-        {
-            var movieActor = _dbContext.MoviesActors.Find(id);
-            _dbContext.Remove(movieActor);
-            return _dbContext.SaveChanges() > 0;
-        }
-
         public MoviesActors GetMoviesActor(int id)
         {
             var movieActor = (
@@ -53,6 +46,13 @@ namespace DataAccess.Implementation
         public bool UpdateMovieActor(MoviesActors moviesActor)
         {
             _dbContext.Entry(moviesActor).State = EntityState.Modified;
+            return _dbContext.SaveChanges() > 0;
+        }
+
+        public bool DeleteMovieActor(int id)
+        {
+            var movieActor = _dbContext.MoviesActors.Find(id);
+            _dbContext.Remove(movieActor);
             return _dbContext.SaveChanges() > 0;
         }
     }

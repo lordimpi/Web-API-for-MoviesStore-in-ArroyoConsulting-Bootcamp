@@ -8,5 +8,8 @@ namespace Infrastructure.DTO.MoviesActors
 {
     public class MoviesActorsUpdateDTO
     {
+        public int MovieActorId { get; set; }
+        public int MovieId { get; set; }
+        public int ActorId { get; set; }
     }
 }

@@ -83,13 +83,20 @@ namespace MoviesAPI
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
+            #region DataAccess
             services.AddScoped<IActorsDataAccess, ActorsDataAccess>();
             services.AddScoped<IGenresDataAccess, GenresDataAccess>();
             services.AddScoped<IMoviesActorsDataAccess, MoviesActorsDataAccess>();
             services.AddScoped<IMoviesDataAccess, MoviesDataAccess>();
             services.AddScoped<IAwardsDataAccess, AwardsDataAccess>();
+            #endregion
+            #region Infrastructure
             services.AddScoped<IMoviesInfrastructure, MoviesInfrastructure>();
             services.AddScoped<IAwardsInfrastructure, AwardsInfrastructure>();
+            services.AddScoped<IActorsInfrastructure, ActorsInfrastructure>();
+            services.AddScoped<IGenresInfrastructure, GenresInfrastructure>();
+            services.AddScoped<IMoviesActorsInfrastructure, MoviesActorsInfrastructure>(); 
+            #endregion
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQL")));
         }

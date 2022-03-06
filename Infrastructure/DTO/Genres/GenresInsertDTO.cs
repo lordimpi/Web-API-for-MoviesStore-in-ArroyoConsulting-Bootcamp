@@ -8,5 +8,6 @@ namespace Infrastructure.DTO.Genres
 {
     public class GenresInsertDTO
     {
+        public string Genre { get; set; }
     }
 }

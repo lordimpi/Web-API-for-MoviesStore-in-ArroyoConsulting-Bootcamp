@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.DTO.MoviesActors
 {
-    public class MoviesActorDTO
+    public class MoviesActorsDTO
     {
+        public int MovieId { get; set; }
+        public int ActorId { get; set; }
     }
 }

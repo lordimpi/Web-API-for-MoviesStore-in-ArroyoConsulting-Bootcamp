@@ -8,5 +8,7 @@ namespace Infrastructure.DTO.Genres
 {
     public class GenresUpdateDTO
     {
+        public int GenreId { get; set; }
+        public string Genre { get; set; }
     }
 }

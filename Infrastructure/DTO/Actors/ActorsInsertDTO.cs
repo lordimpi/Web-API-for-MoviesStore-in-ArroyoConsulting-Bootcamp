@@ -8,5 +8,6 @@ namespace Infrastructure.DTO.Actors
 {
     public class ActorsInsertDTO
     {
+        public string FullName { get; set; }
     }
 }
